@@ -223,6 +223,60 @@
             gap: 0.3rem;
         }
 
+        .project-card {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #27272a;
+        }
+
+        .project-card:last-child { border-bottom: none; padding-bottom: 0; }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .project-name {
+            font-weight: 600;
+            color: #f4f4f5;
+            font-size: 1rem;
+        }
+
+        .project-desc {
+            color: #a1a1aa;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-top: 0.25rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.6rem;
+        }
+
+        .project-tag {
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            background: #1e293b;
+            color: #94a3b8;
+            border: 1px solid #334155;
+        }
+
         footer {
             text-align: center;
             color: #3f3f46;
@@ -318,6 +372,26 @@
                             <span>Feb 2023 - Nov 2024 (1 year 10 months)</span>
                             <span>Durban, South Africa</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="card">
+                <h2>Projects</h2>
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">CR</div>
+                        <div class="project-name">CRED</div>
+                    </div>
+                    <div class="project-desc">
+                        A social media platform focused on user credibility. Promotes creativity, collaboration, and community engagement by measuring credibility based on current and past projects users collaborate on with companies and other creatives.
+                    </div>
+                    <div class="project-tags">
+                        <span class="project-tag">Fullstack</span>
+                        <span class="project-tag">Social Media</span>
+                        <span class="project-tag">Credibility Scoring</span>
                     </div>
                 </div>
             </div>
