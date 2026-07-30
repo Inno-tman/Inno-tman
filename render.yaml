@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: inno-tman
+    runtime: static
+    repo: https://github.com/Inno-tman/Inno-tman.git
+    branch: main
+    staticPublishPath: .
