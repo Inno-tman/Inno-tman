@@ -6,33 +6,39 @@
     <title>Innocent Mbonambi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root[data-theme="dark"] {
-            --bg: #17130e;
-            --bg-soft: #1f1a14;
-            --surface: #211c16;
-            --text: #ece7e0;
-            --muted: #a89f92;
-            --faint: #756c60;
-            --line: #332c24;
-            --accent: #e07a5f;
-            --accent-soft: rgba(224, 122, 95, 0.12);
-            --chip-bg: rgba(224, 122, 95, 0.08);
-            --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+            --bg: #09090b;
+            --bg-soft: #101013;
+            --surface: rgba(255, 255, 255, 0.03);
+            --surface-solid: #18181b;
+            --text: #f4f4f5;
+            --muted: #a1a1aa;
+            --faint: #63636b;
+            --line: rgba(255, 255, 255, 0.08);
+            --accent: #8b5cf6;
+            --accent-2: #06b6d4;
+            --accent-soft: rgba(139, 92, 246, 0.12);
+            --chip-bg: rgba(139, 92, 246, 0.08);
+            --glow: rgba(139, 92, 246, 0.25);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
         :root[data-theme="light"] {
-            --bg: #faf6ef;
-            --bg-soft: #f3ede2;
-            --surface: #fffdf9;
-            --text: #221e18;
-            --muted: #6d6459;
-            --faint: #9a9082;
-            --line: #e6dfd2;
-            --accent: #c4552f;
-            --accent-soft: rgba(196, 85, 47, 0.08);
-            --chip-bg: rgba(196, 85, 47, 0.07);
-            --shadow: 0 12px 40px rgba(90, 70, 40, 0.12);
+            --bg: #fafafa;
+            --bg-soft: #f4f4f5;
+            --surface: rgba(255, 255, 255, 0.7);
+            --surface-solid: #ffffff;
+            --text: #18181b;
+            --muted: #52525b;
+            --faint: #a1a1aa;
+            --line: rgba(0, 0, 0, 0.08);
+            --accent: #7c3aed;
+            --accent-2: #0891b2;
+            --accent-soft: rgba(124, 58, 237, 0.08);
+            --chip-bg: rgba(124, 58, 237, 0.06);
+            --glow: rgba(124, 58, 237, 0.2);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,12 +49,26 @@
             color: var(--text);
             line-height: 1.7;
             transition: background 0.35s ease, color 0.35s ease;
+            overflow-x: hidden;
+        }
+
+        .bg-glow {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(600px 400px at 15% -5%, var(--glow), transparent 70%),
+                radial-gradient(500px 350px at 95% 10%, rgba(6, 182, 212, 0.12), transparent 70%),
+                radial-gradient(700px 500px at 50% 110%, var(--glow), transparent 70%);
         }
 
         .container {
             max-width: 640px;
             margin: 0 auto;
             padding: 3rem 1.75rem 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         /* theme toggle */
@@ -57,17 +77,18 @@
             top: 1.25rem;
             right: 1.25rem;
             z-index: 50;
-            width: 42px; height: 42px;
-            border-radius: 50%;
+            width: 44px; height: 44px;
+            border-radius: 12px;
             border: 1px solid var(--line);
             background: var(--surface);
+            backdrop-filter: blur(12px);
             color: var(--text);
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
             transition: all 0.25s ease;
             box-shadow: var(--shadow);
         }
-        .theme-toggle:hover { transform: rotate(12deg) scale(1.06); }
+        .theme-toggle:hover { transform: translateY(-2px) rotate(8deg); border-color: var(--accent); }
         .theme-toggle svg { width: 19px; height: 19px; }
         .theme-toggle .moon { display: none; }
         :root[data-theme="light"] .theme-toggle .sun { display: none; }
@@ -75,46 +96,49 @@
 
         /* header */
         header { padding: 2.5rem 0 1.5rem; }
-        .eyebrow {
-            font-family: 'Fraunces', serif;
-            font-style: italic;
-            font-size: 1.1rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
+
         .avatar-wrap {
             position: relative;
             display: inline-block;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.6rem;
         }
         .avatar {
-            width: 104px; height: 104px;
-            border-radius: 50%;
+            width: 108px; height: 108px;
+            border-radius: 28px;
             object-fit: cover;
             display: block;
-            border: 3px solid var(--surface);
-            outline: 1px solid var(--line);
+            border: 2px solid var(--line);
             background: var(--bg-soft);
         }
         .avatar-wrap::after {
             content: "";
             position: absolute;
-            inset: -8px;
-            border-radius: 50%;
-            border: 2px dashed var(--accent);
-            opacity: 0.45;
-            transform: rotate(-8deg);
+            inset: -10px;
+            border-radius: 36px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            opacity: 0.35;
+            filter: blur(18px);
+            z-index: -1;
+        }
+
+        .eyebrow {
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--accent);
+            margin-bottom: 0.4rem;
         }
         h1 {
-            font-family: 'Fraunces', serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             font-size: 2.9rem;
             line-height: 1.1;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
             color: var(--text);
         }
         .role {
-            margin-top: 0.75rem;
+            margin-top: 0.7rem;
             font-size: 1.05rem;
             color: var(--muted);
         }
@@ -135,47 +159,60 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.55rem 1.1rem;
-            border-radius: 999px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
             text-decoration: none;
             font-size: 0.85rem;
             font-weight: 500;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             border: 1px solid var(--line);
             background: var(--surface);
+            backdrop-filter: blur(12px);
             color: var(--text);
         }
         .btn:hover {
             border-color: var(--accent);
             color: var(--accent);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
         }
         .btn svg { width: 15px; height: 15px; }
 
-        main { margin-top: 1rem; }
-
-        section { margin: 2.75rem 0; }
+        main { margin-top: 1.5rem; }
+        section { margin: 3rem 0; }
 
         h2 {
-            font-family: 'Fraunces', serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
-            font-size: 1.35rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.02em;
             color: var(--text);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
         }
-        .rule {
-            width: 34px; height: 3px;
-            background: var(--accent);
+        h2::before {
+            content: "";
+            width: 22px; height: 4px;
             border-radius: 2px;
-            margin-bottom: 1.25rem;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
         }
 
         p, .desc { color: var(--muted); font-size: 0.95rem; }
         .summary { max-width: 54ch; }
 
+        .card {
+            border: 1px solid var(--line);
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
         .skills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .chip {
-            padding: 0.3rem 0.85rem;
+            padding: 0.35rem 0.9rem;
             border-radius: 999px;
             font-size: 0.8rem;
             font-weight: 500;
@@ -184,21 +221,26 @@
             color: var(--text);
             transition: all 0.2s;
         }
-        .chip:hover { border-color: var(--accent); color: var(--accent); }
+        .chip:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
 
         .exp-item {
             display: grid;
             grid-template-columns: auto 1fr;
-            gap: 0.9rem;
+            gap: 1rem;
             padding: 1.1rem 0;
-            border-bottom: 1px dashed var(--line);
+            border-bottom: 1px solid var(--line);
         }
         .exp-item:last-child { border-bottom: none; }
         .dot {
-            width: 9px; height: 9px;
+            width: 10px; height: 10px;
             border-radius: 50%;
             margin-top: 7px;
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 0 12px var(--glow);
         }
         .exp-title { font-weight: 600; color: var(--text); font-size: 0.95rem; }
         .exp-company { color: var(--muted); font-size: 0.85rem; }
@@ -213,7 +255,7 @@
 
         .project-card {
             padding: 1.4rem 0;
-            border-bottom: 1px dashed var(--line);
+            border-bottom: 1px solid var(--line);
         }
         .project-card:last-child { border-bottom: none; }
         .project-header {
@@ -223,36 +265,43 @@
             margin-bottom: 0.4rem;
         }
         .project-name {
-            font-family: 'Fraunces', serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 600;
             font-size: 1.15rem;
             color: var(--text);
         }
         .live-link {
             margin-left: auto;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: 0.78rem;
+            font-weight: 500;
             color: var(--accent);
             text-decoration: none;
             white-space: nowrap;
+            padding: 0.25rem 0.7rem;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            background: var(--chip-bg);
+            transition: all 0.2s;
         }
-        .live-link:hover { text-decoration: underline; }
+        .live-link:hover { border-color: var(--accent); transform: translateY(-1px); }
         .project-desc { color: var(--muted); font-size: 0.88rem; max-width: 56ch; }
         .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
         .project-tag {
             font-size: 0.7rem;
             padding: 0.18rem 0.6rem;
-            border-radius: 5px;
+            border-radius: 6px;
             border: 1px solid var(--line);
             background: var(--bg-soft);
             color: var(--faint);
+            font-weight: 500;
         }
 
         .edu-current {
             border-left: 3px solid var(--accent);
-            padding-left: 1rem;
-            background: var(--accent-soft);
-            border-radius: 0 10px 10px 0;
+            padding-left: 1.2rem;
+            background: linear-gradient(90deg, var(--accent-soft), transparent);
+            border-radius: 0 12px 12px 0;
+            padding-right: 1rem;
         }
         .current-tag {
             display: inline-block;
@@ -263,7 +312,7 @@
             color: var(--accent);
             background: var(--accent-soft);
             border: 1px solid var(--line);
-            border-radius: 5px;
+            border-radius: 6px;
             padding: 0.1rem 0.5rem;
             vertical-align: 2px;
             margin-left: 0.5rem;
@@ -289,6 +338,7 @@
     </style>
 </head>
 <body>
+    <div class="bg-glow"></div>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -299,7 +349,7 @@
             <div class="avatar-wrap">
                 <img src="innoDP.jpg" alt="Innocent Mbonambi" class="avatar">
             </div>
-            <div class="eyebrow">Hey, I'm</div>
+            <div class="eyebrow">Fullstack Developer</div>
             <h1>Innocent Mbonambi</h1>
             <div class="role"><strong>Junior Fullstack Software Developer</strong> at Adapt IT</div>
             <div class="location">Durban, KwaZulu-Natal, South Africa &middot; BCom ISTN Honors Student</div>
@@ -323,56 +373,58 @@
         <main>
             <section>
                 <h2>About</h2>
-                <div class="rule"></div>
-                <p class="summary">I'm a proactive smart worker who enjoys contributing towards team work. I like thinking critically and putting ideas into action.</p>
+                <div class="card">
+                    <p class="summary">I'm a proactive smart worker who enjoys contributing towards team work. I like thinking critically and putting ideas into action.</p>
+                </div>
             </section>
 
             <section>
                 <h2>Top Skills</h2>
-                <div class="rule"></div>
-                <div class="skills">
-                    <span class="chip">Software Development</span>
-                    <span class="chip">Programming</span>
-                    <span class="chip">Data Structures &amp; Algorithms</span>
+                <div class="card">
+                    <div class="skills">
+                        <span class="chip">Software Development</span>
+                        <span class="chip">Programming</span>
+                        <span class="chip">Data Structures &amp; Algorithms</span>
+                    </div>
                 </div>
             </section>
 
             <section>
                 <h2>Experience</h2>
-                <div class="rule"></div>
-
-                <div class="exp-item">
-                    <div class="dot"></div>
-                    <div>
-                        <div class="exp-title">Junior Fullstack Software Developer</div>
-                        <div class="exp-company">Adapt IT Holdings Proprietary Limited</div>
-                        <div class="exp-meta">
-                            <span>May 2026 &mdash; Present</span>
-                            <span>South Africa</span>
+                <div class="card">
+                    <div class="exp-item">
+                        <div class="dot"></div>
+                        <div>
+                            <div class="exp-title">Junior Fullstack Software Developer</div>
+                            <div class="exp-company">Adapt IT Holdings Proprietary Limited</div>
+                            <div class="exp-meta">
+                                <span>May 2026 &mdash; Present</span>
+                                <span>South Africa</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="exp-item">
-                    <div class="dot"></div>
-                    <div>
-                        <div class="exp-title">Graduate Software Developer</div>
-                        <div class="exp-company">Adapt IT Holdings Proprietary Limited</div>
-                        <div class="exp-meta">
-                            <span>May 2025 &mdash; Apr 2026</span>
-                            <span>South Africa</span>
+                    <div class="exp-item">
+                        <div class="dot"></div>
+                        <div>
+                            <div class="exp-title">Graduate Software Developer</div>
+                            <div class="exp-company">Adapt IT Holdings Proprietary Limited</div>
+                            <div class="exp-meta">
+                                <span>May 2025 &mdash; Apr 2026</span>
+                                <span>South Africa</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="exp-item">
-                    <div class="dot"></div>
-                    <div>
-                        <div class="exp-title">Computer Science and Information Systems Technology Tutor/Demonstrator</div>
-                        <div class="exp-company">University of KwaZulu-Natal</div>
-                        <div class="exp-meta">
-                            <span>Feb 2023 &mdash; Nov 2024</span>
-                            <span>Durban, South Africa</span>
+                    <div class="exp-item">
+                        <div class="dot"></div>
+                        <div>
+                            <div class="exp-title">Computer Science and Information Systems Technology Tutor/Demonstrator</div>
+                            <div class="exp-company">University of KwaZulu-Natal</div>
+                            <div class="exp-meta">
+                                <span>Feb 2023 &mdash; Nov 2024</span>
+                                <span>Durban, South Africa</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -380,80 +432,80 @@
 
             <section>
                 <h2>Projects</h2>
-                <div class="rule"></div>
+                <div class="card">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-name">CRED</div>
+                            <a href="https://cred-web.onrender.com" target="_blank" class="live-link">live site &nearr;</a>
+                        </div>
+                        <div class="project-desc">
+                            A social media platform focused on user credibility. Promotes creativity, collaboration, and community engagement by measuring credibility based on current and past projects users collaborate on with companies and other creatives. Features JWT-authenticated REST API with collaboration management, 5-star rating system, auto badge awarding, and real-time CRED scoring.
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">C# .NET 8</span>
+                            <span class="project-tag">Angular</span>
+                            <span class="project-tag">Entity Framework</span>
+                            <span class="project-tag">SQL Server</span>
+                            <span class="project-tag">JWT Auth</span>
+                            <span class="project-tag">BCrypt</span>
+                            <span class="project-tag">Docker</span>
+                        </div>
+                    </div>
 
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-name">CRED</div>
-                        <a href="https://cred-web.onrender.com" target="_blank" class="live-link">live site &nearr;</a>
-                    </div>
-                    <div class="project-desc">
-                        A social media platform focused on user credibility. Promotes creativity, collaboration, and community engagement by measuring credibility based on current and past projects users collaborate on with companies and other creatives. Features JWT-authenticated REST API with collaboration management, 5-star rating system, auto badge awarding, and real-time CRED scoring.
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">C# .NET 8</span>
-                        <span class="project-tag">Angular</span>
-                        <span class="project-tag">Entity Framework</span>
-                        <span class="project-tag">SQL Server</span>
-                        <span class="project-tag">JWT Auth</span>
-                        <span class="project-tag">BCrypt</span>
-                        <span class="project-tag">Docker</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-name">StudyRoom</div>
-                        <a href="https://studyroom-m9nx.onrender.com" target="_blank" class="live-link">live site &nearr;</a>
-                    </div>
-                    <div class="project-desc">
-                        A virtual study room platform where students can create and join online study rooms, chat in real time via SignalR, collaborate on markdown notes, and use synchronized Pomodoro timers to stay productive together.
-                    </div>
-                    <div class="project-tags">
-                        <span class="project-tag">Angular 20</span>
-                        <span class="project-tag">ASP.NET Core 9</span>
-                        <span class="project-tag">SignalR</span>
-                        <span class="project-tag">PostgreSQL</span>
-                        <span class="project-tag">Entity Framework</span>
-                        <span class="project-tag">JWT Auth</span>
-                        <span class="project-tag">Docker</span>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-name">StudyRoom</div>
+                            <a href="https://studyroom-m9nx.onrender.com" target="_blank" class="live-link">live site &nearr;</a>
+                        </div>
+                        <div class="project-desc">
+                            A virtual study room platform where students can create and join online study rooms, chat in real time via SignalR, collaborate on markdown notes, and use synchronized Pomodoro timers to stay productive together.
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">Angular 20</span>
+                            <span class="project-tag">ASP.NET Core 9</span>
+                            <span class="project-tag">SignalR</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">Entity Framework</span>
+                            <span class="project-tag">JWT Auth</span>
+                            <span class="project-tag">Docker</span>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <section>
                 <h2>Education</h2>
-                <div class="rule"></div>
-
-                <div class="exp-item edu-current">
-                    <div class="dot"></div>
-                    <div>
-                        <div class="exp-title">Bachelor of Commerce Honors, Information Systems and Technology <span class="current-tag">Current</span></div>
-                        <div class="exp-company">University of KwaZulu-Natal</div>
-                        <div class="exp-meta">
-                            <span>Jan 2025 &mdash; Dec 2026</span>
+                <div class="card">
+                    <div class="exp-item edu-current">
+                        <div class="dot"></div>
+                        <div>
+                            <div class="exp-title">Bachelor of Commerce Honors, Information Systems and Technology <span class="current-tag">Current</span></div>
+                            <div class="exp-company">University of KwaZulu-Natal</div>
+                            <div class="exp-meta">
+                                <span>Jan 2025 &mdash; Dec 2026</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="exp-item">
-                    <div class="dot"></div>
-                    <div>
-                        <div class="exp-title">Bachelor of Science, Computer Science and Information Technology</div>
-                        <div class="exp-company">University of KwaZulu-Natal</div>
-                        <div class="exp-meta">
-                            <span>Jan 2020 &mdash; Dec 2024</span>
+                    <div class="exp-item">
+                        <div class="dot"></div>
+                        <div>
+                            <div class="exp-title">Bachelor of Science, Computer Science and Information Technology</div>
+                            <div class="exp-company">University of KwaZulu-Natal</div>
+                            <div class="exp-meta">
+                                <span>Jan 2020 &mdash; Dec 2024</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="exp-item">
-                    <div class="dot"></div>
-                    <div>
-                        <div class="exp-title">Grade 12, High School / Secondary Certificate</div>
-                        <div class="exp-company">Ubuhlebesizwe Secondary</div>
-                        <div class="exp-meta">
-                            <span>2018 &mdash; 2020</span>
+                    <div class="exp-item">
+                        <div class="dot"></div>
+                        <div>
+                            <div class="exp-title">Grade 12, High School / Secondary Certificate</div>
+                            <div class="exp-company">Ubuhlebesizwe Secondary</div>
+                            <div class="exp-meta">
+                                <span>2018 &mdash; 2020</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -462,7 +514,7 @@
 
         <footer>
             <span>&copy; 2025 Innocent Mbonambi</span>
-            <span>built with care in Durban</span>
+            <span>Adapt IT &middot; Durban</span>
         </footer>
     </div>
 
