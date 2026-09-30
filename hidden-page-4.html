@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>From Bump to Data: How AI Could Help eThekwini Find Its Potholes</title>
+  <style>
+    :root{--bg:#fbfbfb;--card:#fff;--muted:#666;--accent:#0b63c6;--max:900px}
+    *{box-sizing:border-box}
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;line-height:1.6;color:#111;background:var(--bg);padding:2rem}
+    .wrap{max-width:var(--max);margin:0 auto}
+    h1{font-size:1.4rem;margin:.25rem 0;color:var(--accent)}
+    .card{background:var(--card);padding:1rem;border-radius:8px;box-shadow:0 1px 0 rgba(0,0,0,.06);margin-bottom:1rem}
+    .small{font-size:.95rem;color:var(--muted)}
+    .hidden-note{font-size:.85rem;color:#999;margin-bottom:.5rem}
+    .refs{font-size:.95rem;color:var(--muted)}
+    /* ensure long reference URLs wrap and do not overflow */
+    .refs, .refs a {word-break:break-word;overflow-wrap:break-word;white-space:normal}
+    footer{font-size:.9rem;color:var(--muted);margin-top:1rem}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hidden-note">Hidden page — not included in site navigation.</div>
+    <h1>From Bump to Data: How AI Could Help eThekwini Find Its Potholes</h1>
+
+    <section class="card">
+      <p>For many drivers in eThekwini, a pothole is more than an inconvenience. A sudden impact can damage a tyre, wheel or suspension, while avoiding one can create another danger on a busy road. But what if the smartphone already in a driver&rsquo;s vehicle could help identify that pothole before the next driver encounters it?</p>
+
+      <p>eThekwini Municipality already has mechanisms through which residents can report road defects, while municipal teams inspect and repair damaged roads. The municipality is responsible for maintaining 7,682&nbsp;km of roads, forming part of an overall 9,462&nbsp;km road network within eThekwini (eThekwini Municipality, 2026). The challenge is that road conditions change continuously, and manually reported defects provide only part of the picture. An alternative approach could complement existing reporting systems by turning everyday journeys into a source of road-condition data.</p>
+
+      <p>The proposed system would use sensors already found in many smartphones. An accelerometer measures changes in movement, while a gyroscope measures changes in rotation and orientation. When a vehicle passes over a pothole, these sensors can record an unusual movement pattern. An artificial intelligence (AI) model could analyse this data and determine whether the pattern is consistent with a pothole or another type of road disturbance. GPS could then associate the suspected defect with a specific location (Wu et&nbsp;al., 2020).</p>
+
+      <p>The idea is not purely theoretical. Wu et&nbsp;al. (2020) developed and tested a machine-learning approach using smartphone vibration sensors and GPS for pothole detection. Their study reported promising results in an experimental setting, demonstrating that smartphones can potentially provide a lower-cost source of road-condition information than specialised inspection vehicles. However, the researchers also noted that their system would require further validation before being applied in different environments.</p>
+
+      <p>The proposed system could go further by combining detections from multiple drivers. If several vehicles travelling along the same section of road generate similar sensor events at approximately the same location, the system could increase its confidence that a pothole exists. Drivers could also be given the opportunity to confirm or reject a suspected detection. This approach is supported by research showing that combining information from multiple smartphone journeys can improve the identification and localisation of road defects (Wu et&nbsp;al., 2020). Over time, the number of detections and the estimated severity of the impacts could provide additional information that municipalities could use when prioritising road maintenance.</p>
+    </section>
+
+    <section class="card">
+      <p>This represents a 4IR application because it combines several digital technologies rather than relying on one technology in isolation. AI interprets sensor data, GPS provides geographical information, smartphones act as connected sensing devices, and data analytics can transform individual observations into information about a wider road network. The Fourth Industrial Revolution is commonly associated with the convergence of technologies such as AI, connected devices and data-driven systems, making this combination consistent with a 4IR perspective (Schwab, 2016). The physical experience of hitting a pothole is therefore converted into digital data that can potentially support decisions in the physical world.</p>
+
+      <p>For drivers in eThekwini, one potential benefit would be earlier warnings. If a particular road section has repeatedly generated confirmed pothole detections, the system could warn approaching drivers so that they can reduce their speed and take greater care. For municipal authorities, the larger benefit could be improved information about where road defects occur and how frequently they are encountered. This could complement existing reporting channels rather than replace them.</p>
+
+      <p>However, the technology would have significant limitations. Not every unusual movement is a pothole. Speed bumps, rough surfaces and other road features could produce similar sensor readings. Different vehicles, smartphone models, phone positions and driving speeds could also affect the data. AI models would therefore need to be trained and tested using appropriate local road conditions rather than assuming that a model developed elsewhere would perform identically in eThekwini.</p>
+
+      <p>Privacy and digital inequality would also need consideration. A system collecting location information could create privacy concerns, while relying on smartphones could produce less information from communities with limited smartphone access, mobile data or connectivity. These issues are particularly important when considering whether a technology developed for some road users would provide an equally useful picture of road conditions across eThekwini. Most importantly, better pothole detection would not automatically result in better roads. Municipalities would still need sufficient budgets, materials, personnel and operational capacity to repair the defects identified.</p>
+    </section>
+
+    <section class="card">
+      <p>South Africa already has some experience with digital pothole reporting. For example, SANRAL&rsquo;s Vala Zonke application allows users to report potholes by providing their location and, where appropriate, photographs (SANRAL, 2026). This demonstrates that smartphone-based road-condition reporting is already possible within the South African context, although automated AI-based detection would represent a further development rather than simply replacing the existing reporting process.</p>
+
+      <p>South Africa therefore has some of the technological foundations required for such a system, but technological availability should not be confused with complete readiness. Successful implementation would require reliable connectivity, suitable data systems, accurate locally tested AI models and cooperation between road users, technology providers and municipalities.</p>
+
+      <p>AI cannot repair a pothole. What it could potentially do is make the pothole more visible as a data point. By turning everyday journeys into a distributed source of road-condition information, eThekwini could complement traditional reporting with a system that detects, maps and validates road defects. The value of the technology would therefore lie not in replacing municipal workers or existing reporting systems, but in giving decision-makers another evidence-based source of information about where road-maintenance attention may be needed.</p>
+    </section>
+
+    <section class="card refs">
+      <h2>References</h2>
+      <ol>
+        <li>eThekwini Municipality. (2026). <em>Roads &amp; Stormwater Maintenance</em>. eThekwini Corporate Website.</li>
+        <li>SANRAL. (2026). <em>Vala Zonke</em>. South African National Roads Agency. The current Vala Zonke app description confirms that users can report potholes, specify locations and attach images.</li>
+        <li>Schwab, K. (2016). <em>The Fourth Industrial Revolution: What it means, how to respond</em>. World Economic Forum.</li>
+        <li>Wu, C., Wang, Z., Hu, S., Lepine, J., Na, X., Ainalis, D., &amp; Stettler, M. (2020). An automated machine-learning approach for road pothole detection using smartphone sensor data. <em>Sensors, 20</em>(19), 5564. <a href="https://doi.org/10.3390/s20195564" target="_blank" rel="noopener noreferrer">https://doi.org/10.3390/s20195564</a>.</li>
+      </ol>
+    </section>
+
+    <footer>
+      <p>Prepared as an assessment deliverable for ISTN731.</p>
+    </footer>
+  </div>
+</body>
+</html>
