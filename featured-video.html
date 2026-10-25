@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#09090b">
+    <title>Featured Video | Innocent Mbonambi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root{color-scheme:dark;--bg:#09090b;--surface:#18181b;--text:#f4f4f5;--muted:#a1a1aa;--line:rgba(255,255,255,.1);--accent:#a78bfa}
+        *{box-sizing:border-box}
+        body{min-height:100vh;margin:0;padding:2rem;font-family:Inter, sans-serif;line-height:1.7;color:var(--text);background:radial-gradient(ellipse at 15% 0%,rgba(139,92,246,.2),transparent 45%),var(--bg)}
+        main{width:min(900px,100%);margin:0 auto}
+        .back{display:inline-flex;margin-bottom:2rem;color:var(--accent);text-decoration:none;font-size:.9rem}
+        .back:hover{text-decoration:underline}
+        h1{font:700 clamp(2rem,5vw,3rem)/1.1 "Space Grotesk",sans-serif;letter-spacing:-.03em}
+        p{color:var(--muted)}
+        .player{position:relative;width:100%;aspect-ratio:16/9;margin-top:1.5rem;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+        iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+        .more{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+        .more a{padding:.65rem 1rem;border:1px solid var(--line);border-radius:10px;color:var(--text);text-decoration:none;background:var(--surface)}
+        .more a:hover{border-color:var(--accent);color:var(--accent)}
+        @media(max-width:520px){body{padding:1.25rem}.player{border-radius:12px}}
+    </style>
+</head>
+<body>
+    <main>
+        <a class="back" href="index.html">&larr; Back to portfolio</a>
+        <h1>Featured Video</h1>
+        <p>Watch my featured video.</p>
+        <div class="player">
+            <iframe src="https://www.youtube.com/embed/aNczLnYWFIA" title="Innocent Mbonambi Featured Video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <nav class="more" aria-label="More videos">
+            <a href="vodcast.html">Watch my vodcast &rarr;</a>
+        </nav>
+    </main>
+</body>
+</html>
